@@ -10,12 +10,30 @@
 
     <!--Styling-->
     <Page.Resources>
-        <Style x:Key="searchLabel" TargetType="Label">
-            <Setter Property="FontFamily" Value="Roboto"/>
-            <Setter Property="FontSize" Value="30"/>
+
+        <Style TargetType="Page">
             <Setter Property="FontFamily" Value="Roboto"/>
         </Style>
 
+        <Style x:Key="searchLabel" TargetType="Label">
+            <Setter Property="FontSize" Value="30"/>
+        </Style>
+        
+        <Style TargetType="Button">
+            <Setter Property="FontSize" Value="14"/>
+            <Setter Property="Margin" Value="5"/>
+            <Setter Property="VerticalAlignment" Value="Center"/>
+        </Style>
+        
+        <Style TargetType="DataGridColumnHeader">
+            <Setter Property="FontSize" Value="20"/>
+            <Setter Property="FontWeight" Value="DemiBold"/>
+        </Style>
+        
+        <Style TargetType="DataGridCell">
+            <Setter Property="FontSize" Value="16"/>
+            <Setter Property="FontWeight" Value="Thin"/>
+        </Style>
 
     </Page.Resources>
 
@@ -34,12 +52,12 @@
                 <ColumnDefinition/>
             </Grid.ColumnDefinitions>
 
-            <Label Style="{StaticResource searchLabel}" Content="Suche" Grid.Column="0" HorizontalAlignment="Center"/>
+            <Label Style="{StaticResource searchLabel}" Content="Search:" Grid.Column="0" HorizontalAlignment="Center"/>
             <TextBox x:Name="searchText" Grid.Column="1" VerticalAlignment="Center" TextChanged="TextBox_TextChanged"/>
         </Grid>
 
         <!--List of websites-->
-        <DataGrid Grid.Row="1" Name="websiteTable">
+        <DataGrid Grid.Row="1" Name="websiteTable" SelectedItem="{Binding Path=SelectedPage, Mode=TwoWay}">
 
             <DataGrid.Columns>
                 <DataGridTextColumn Header="Website" Binding="{Binding Website}" Width="*"/>
@@ -53,23 +71,18 @@
         <!--Option Buttons-->
         <Grid Grid.Row="2">
             <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="0.1*"/>
                 <ColumnDefinition/>
-                <ColumnDefinition Width="0.1*"/>
                 <ColumnDefinition/>
-                <ColumnDefinition Width="0.1*"/>
                 <ColumnDefinition/>
-                <ColumnDefinition Width="0.1*"/>
                 <ColumnDefinition/>
-                <ColumnDefinition Width="0.1*"/>
+                <ColumnDefinition/>
             </Grid.ColumnDefinitions>
 
-            <Button Grid.Column="1" Content="Copy Username"/>
-            <Button Grid.Column="3" Content="Copy Password"/>
-            <Button Grid.Column="5" Content="Change Username"/>
-            <Button Grid.Column="7" Content="Change Password"/>
+            <Button Grid.Column="0" Content="Copy Username"/>
+            <Button Grid.Column="1" Content="Copy Password"/>
+            <Button Grid.Column="2" Content="Change Website"/>
+            <Button Grid.Column="3" Content="Change Username"/>
+            <Button Grid.Column="4" Content="Create New Password"/>
         </Grid>
-
-
     </Grid>
 </Page>

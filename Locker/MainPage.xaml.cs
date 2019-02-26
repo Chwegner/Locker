@@ -3,7 +3,6 @@ using System.Collections;
 using System.Windows.Controls;
 using System.Windows.Navigation;
 
-
 namespace Locker
 {
     /// <summary>
@@ -38,7 +37,6 @@ namespace Locker
                 websiteTable.Items.Add(item);
             }
         }
-
 
         public class WebsiteInfo
         {

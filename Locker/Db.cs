@@ -27,10 +27,8 @@ namespace Locker
             }
         }
 
-
         public Boolean VerifyPassword(string username, string password)
         {
-
             Boolean verified = false;
 
             string sql = "SELECT * FROM admin WHERE username = '" + username + "' AND password = '" + password + "'";
@@ -42,16 +40,11 @@ namespace Locker
                 verified = true;
             }
 
-
             return verified;
-
-
         }
 
         public ArrayList SearchResults(string chars)
         {
-
-
             ArrayList results = new ArrayList();
             results.Clear();
             string search = chars + "%";
@@ -77,11 +70,26 @@ namespace Locker
                 results.Add(result);
             }
 
-
             return results;
         }
 
+        public void ChangeWebsite(int Id, string name)
+        {
+            string sql = "UPDATE TABLE pages SET website = '" + name + "' " +
+                         "WHERE ID = " + Id;
 
+            SQLiteCommand cmd = new SQLiteCommand(sql, dbCon);
+
+            try
+            {
+                cmd.ExecuteNonQuery();
+            }
+            catch (InvalidOperationException e)
+            {
+                MessageBox.Show(e.Message);
+            }
+
+        }
 
     }
 }
