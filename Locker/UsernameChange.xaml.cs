@@ -19,17 +19,22 @@ namespace Locker
     /// </summary>
     public partial class UsernameChange : Window
     {
-        MainPage main = new MainPage();
-        object selectedItem;
+        long websiteID;
+        Db db = new Db();
 
-        public UsernameChange()
+        public UsernameChange(string username, long id)
         {
-            InitializeComponent();            
+            InitializeComponent();
+
+            usernameBox.Text = username;
+            websiteID = id;
         }
 
-        private void TextBox_Initialized(object sender, EventArgs e)
+        private void SaveUsername(object sender, RoutedEventArgs e)
         {
-           
+            string newUsername = usernameBox.Text;
+            db.ChangeUsername(newUsername, websiteID);
+            this.Close();
         }
     }
 }

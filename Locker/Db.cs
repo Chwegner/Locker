@@ -49,7 +49,7 @@ namespace Locker
             results.Clear();
             string search = chars + "%";
 
-            string sql = "SELECT t1.website AS website, t2.username AS username, t2.email AS email, t2.change AS change " +
+            string sql = "SELECT t1.ID AS id, t1.website AS website, t2.username AS username, t2.email AS email, t2.change AS change " +
                          "FROM pages AS t1, logins AS t2 " +
                          "WHERE t1.ID = t2.websiteId ";
             if (!chars.Equals(""))
@@ -62,6 +62,8 @@ namespace Locker
             while (reader.Read())
             {
                 var result = new WebsiteInfo();
+
+                result.Id = (long)reader["id"];
                 result.Website = (string)reader["website"];
                 result.Username = (string)reader["username"];
                 result.Email = (string)reader["email"];
@@ -73,10 +75,10 @@ namespace Locker
             return results;
         }
 
-        public void ChangeWebsite(int Id, string name)
+        public void ChangeUsername(string name, long id)
         {
-            string sql = "UPDATE TABLE pages SET website = '" + name + "' " +
-                         "WHERE ID = " + Id;
+            string sql = "UPDATE logins SET username = '" + name + "' " +
+                         "WHERE websiteId = " + id;
 
             SQLiteCommand cmd = new SQLiteCommand(sql, dbCon);
 

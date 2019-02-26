@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Locker"
         mc:Ignorable="d"
-        Title="UsernameChange" Height="200" Width="400">
+        Title="Change your Username" Height="200" Width="400">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition/>
@@ -14,7 +14,7 @@
         </Grid.RowDefinitions>
 
         <Label Content="Enter new Username" Grid.Row="0"/>
-        <TextBox Grid.Row="1" Initialized="TextBox_Initialized"/>
-        <Button Grid.Row="2" Content="Save"/>
+        <TextBox x:Name="usernameBox" Grid.Row="1"/>
+        <Button x:Name="saveButton" Grid.Row="2" Content="Save" Click="SaveUsername"/>
     </Grid>
 </Window>
