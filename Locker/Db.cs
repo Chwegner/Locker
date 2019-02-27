@@ -31,7 +31,7 @@ namespace Locker
         {
             Boolean verified = false;
 
-            string sql = "SELECT * FROM admin WHERE username = '" + username + "' AND password = '" + password + "'";
+            string sql = string.Format("SELECT * FROM admin WHERE username = '{0}' AND password = '{1}'", username, password);
             SQLiteCommand cmd = new SQLiteCommand(sql, dbCon);
             SQLiteDataReader reader = cmd.ExecuteReader();
 
@@ -49,11 +49,10 @@ namespace Locker
             results.Clear();
             string search = chars + "%";
 
-            string sql = "SELECT Id, website, username, email, change " +
-                         "FROM logins ";
+            string sql = "SELECT Id, website, username, email, change FROM logins ";
             if (!chars.Equals(""))
             {
-                sql = sql + "WHERE website LIKE '" + search + "'";
+                sql = sql + string.Format("WHERE website LIKE '{0}'", search);
             }
             SQLiteCommand cmd = new SQLiteCommand(sql, dbCon);
             SQLiteDataReader reader = cmd.ExecuteReader();
@@ -76,22 +75,19 @@ namespace Locker
 
         public void ChangeUsername(string name, long id)
         {
-            string sql = "UPDATE logins SET username = '" + name + "' " +
-                         "WHERE Id = " + id;
+            string sql = string.Format("UPDATE logins SET username = '{0}' WHERE Id = {1}", name, id);
             CmdExecution(sql);
         }
 
         public void ChangeWebsite(string name, long id)
         {
-            string sql = "UPDATE logins SET website = '" + name + "' " +
-                         "WHERE Id = " + id;
+            string sql = string.Format("UPDATE logins SET website = '{0}' WHERE Id = {1}", name, id);
             CmdExecution(sql);
         }
 
         public void ChangeEmail(string email, long id)
         {
-            string sql = "UPDATE logins SET email = '" + email + "' " +
-                         "WHERE Id = " + id;
+            string sql = string.Format("UPDATE logins SET email = '{0}' WHERE Id = {1}", email, id);
             CmdExecution(sql);
         }
 
