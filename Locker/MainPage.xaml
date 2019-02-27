@@ -76,13 +76,15 @@
                 <ColumnDefinition/>
                 <ColumnDefinition/>
                 <ColumnDefinition/>
+                <ColumnDefinition/>
             </Grid.ColumnDefinitions>
 
             <Button Grid.Column="0" Content="Copy Username"/>
             <Button Grid.Column="1" Content="Copy Password"/>
-            <Button Grid.Column="2" Content="Change Website"/>
+            <Button Grid.Column="2" Content="Change Website" Click="ChangeWebsite"/>
             <Button Grid.Column="3" Content="Change Username" Click="ChangeUsername"/>
-            <Button Grid.Column="4" Content="Create New Password"/>
+            <Button Grid.Column="4" Content="Change E-Mail" Click="ChangeEmail"/>
+            <Button Grid.Column="5" Content="Create New Password"/>
         </Grid>
     </Grid>
 </Page>

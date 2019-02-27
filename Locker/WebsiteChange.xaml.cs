@@ -14,26 +14,23 @@ using System.Windows.Shapes;
 
 namespace Locker
 {
-    /// <summary>
-    /// Interaktionslogik für UsernameChange.xaml
-    /// </summary>
-    public partial class UsernameChange : Window
+    public partial class WebsiteChange : Window
     {
-        private long websiteID;
-        private Db db = new Db();
+        long websiteID;
+        Db db = new Db();
 
-        public UsernameChange(string username, long id)
+        public WebsiteChange(string website, long id)
         {
             InitializeComponent();
 
-            usernameBox.Text = username;
+            websiteBox.Text = website;
             websiteID = id;
         }
 
-        private void SaveUsername(object sender, RoutedEventArgs e)
+        private void SaveWebsite(object sender, RoutedEventArgs e)
         {
-            string newUsername = usernameBox.Text;
-            db.ChangeUsername(newUsername, websiteID);
+            string newWebsite = websiteBox.Text;
+            db.ChangeWebsite(newWebsite, websiteID);
             this.Close();
         }
     }

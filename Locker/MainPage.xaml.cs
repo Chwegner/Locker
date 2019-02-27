@@ -30,7 +30,7 @@ namespace Locker
         }
 
         // fill Datagrid from DB depending on search
-        public void FillDatagrid(string search = "")
+        private void FillDatagrid(string search = "")
         {
             websiteTable.Items.Clear();
 
@@ -58,9 +58,47 @@ namespace Locker
             }
             catch (NullReferenceException n)
             {
-                MessageBox.Show("No Row Selected?\r\n\r\n" + n.Message);
+                MessageBox.Show("No Row Selected? \r\n\r\n" + n.Message);
             }
 
+        }
+
+        // open window to change selected website name
+        private void ChangeWebsite(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                WebsiteInfo info = (WebsiteInfo)websiteTable.SelectedItem;
+                string website = info.Website;
+                long id = info.Id;
+
+                WebsiteChange change = new WebsiteChange(website, id);
+                change.ShowDialog();
+                FillDatagrid();
+            }
+            catch (NullReferenceException n)
+            {
+                MessageBox.Show("No Row Selected? \r\n\r\n" + n.Message);
+            }
+        }
+
+        // open window to change selected E-Mail Adress
+        private void ChangeEmail(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                WebsiteInfo info = (WebsiteInfo)websiteTable.SelectedItem;
+                string email = info.Email;
+                long id = info.Id;
+
+                EmailChange change = new EmailChange(email, id);
+                change.ShowDialog();
+                FillDatagrid();
+            }
+            catch (NullReferenceException n)
+            {
+                MessageBox.Show("No Row Selected? \r\n\r\n" + n.Message);
+            }
         }
 
         /// <summary>
@@ -74,5 +112,6 @@ namespace Locker
             public string Email { get; set; }
             public string ChangeDate { get; set; }
         }
+
     }
 }

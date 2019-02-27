@@ -79,7 +79,25 @@ namespace Locker
         {
             string sql = "UPDATE logins SET username = '" + name + "' " +
                          "WHERE websiteId = " + id;
+            CmdExecution(sql);
+        }
 
+        public void ChangeWebsite(string name, long id)
+        {
+            string sql = "UPDATE pages SET website = '" + name + "' " +
+                         "WHERE ID = " + id;
+            CmdExecution(sql);
+        }
+
+        public void ChangeEmail(string email, long id)
+        {
+            string sql = "UPDATE logins SET email = '" + email + "' " +
+                         "WHERE websiteId = " + id;
+            CmdExecution(sql);
+        }
+
+        private void CmdExecution(string sql)
+        {
             SQLiteCommand cmd = new SQLiteCommand(sql, dbCon);
 
             try
@@ -90,8 +108,6 @@ namespace Locker
             {
                 MessageBox.Show(e.Message);
             }
-
         }
-
     }
 }

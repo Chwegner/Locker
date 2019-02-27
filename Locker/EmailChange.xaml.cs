@@ -15,25 +15,25 @@ using System.Windows.Shapes;
 namespace Locker
 {
     /// <summary>
-    /// Interaktionslogik für UsernameChange.xaml
+    /// Interaction logic for EmailChange.xaml
     /// </summary>
-    public partial class UsernameChange : Window
+    public partial class EmailChange : Window
     {
-        private long websiteID;
-        private Db db = new Db();
+        long websiteID;
+        Db db = new Db();
 
-        public UsernameChange(string username, long id)
+        public EmailChange(string email, long id)
         {
             InitializeComponent();
 
-            usernameBox.Text = username;
+            emailBox.Text = email;
             websiteID = id;
         }
 
-        private void SaveUsername(object sender, RoutedEventArgs e)
+        private void SaveEmail(object sender, RoutedEventArgs e)
         {
-            string newUsername = usernameBox.Text;
-            db.ChangeUsername(newUsername, websiteID);
+            string newEmail = emailBox.Text;
+            db.ChangeEmail(newEmail, websiteID);
             this.Close();
         }
     }

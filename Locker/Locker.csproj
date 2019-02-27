@@ -78,9 +78,19 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="EmailChange.xaml.cs">
+      <DependentUpon>EmailChange.xaml</DependentUpon>
+    </Compile>
     <Compile Include="UsernameChange.xaml.cs">
       <DependentUpon>UsernameChange.xaml</DependentUpon>
     </Compile>
+    <Compile Include="WebsiteChange.xaml.cs">
+      <DependentUpon>WebsiteChange.xaml</DependentUpon>
+    </Compile>
+    <Page Include="EmailChange.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="LockerMain.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -109,6 +119,10 @@
       <SubType>Code</SubType>
     </Compile>
     <Page Include="UsernameChange.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="WebsiteChange.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
