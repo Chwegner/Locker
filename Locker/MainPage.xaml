@@ -21,7 +21,7 @@
         
         <Style TargetType="Button">
             <Setter Property="FontSize" Value="14"/>
-            <Setter Property="Margin" Value="5"/>
+            <Setter Property="Margin" Value="3"/>
             <Setter Property="VerticalAlignment" Value="Center"/>
         </Style>
         
@@ -79,12 +79,21 @@
                 <ColumnDefinition/>
             </Grid.ColumnDefinitions>
 
-            <Button Grid.Column="0" Content="Copy Username"/>
-            <Button Grid.Column="1" Content="Copy Password"/>
-            <Button Grid.Column="2" Content="Change Website" Click="ChangeWebsite"/>
-            <Button Grid.Column="3" Content="Change Username" Click="ChangeUsername"/>
-            <Button Grid.Column="4" Content="Change E-Mail" Click="ChangeEmail"/>
-            <Button Grid.Column="5" Content="Create New Password"/>
+            <Grid.RowDefinitions>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+
+            <Button Grid.Column="0" Grid.Row="0" Content="Copy Username"/>
+            <Button Grid.Column="1" Grid.Row="0" Content="Copy Password"/>
+            <Button Grid.Column="6" Grid.Row="0" Content="Copy OLD Password"/>
+            <Button Grid.Column="0" Grid.Row="1" Content="Add new Login"/>
+            <Button Grid.Column="1" Grid.Row="1" Content="Delete Login"/>
+            <Button Grid.Column="0" Grid.Row="2" Content="Change Website" Click="ChangeWebsite"/>
+            <Button Grid.Column="1" Grid.Row="2" Content="Change Username" Click="ChangeUsername"/>
+            <Button Grid.Column="2" Grid.Row="2" Content="Change E-Mail" Click="ChangeEmail"/>
+            <Button Grid.Column="6" Grid.Row="2" Content="Create New Password"/>
         </Grid>
     </Grid>
 </Page>
