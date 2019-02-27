@@ -49,12 +49,11 @@ namespace Locker
             results.Clear();
             string search = chars + "%";
 
-            string sql = "SELECT t1.ID AS id, t1.website AS website, t2.username AS username, t2.email AS email, t2.change AS change " +
-                         "FROM pages AS t1, logins AS t2 " +
-                         "WHERE t1.ID = t2.websiteId ";
+            string sql = "SELECT Id, website, username, email, change " +
+                         "FROM logins ";
             if (!chars.Equals(""))
             {
-                sql = sql + "AND website LIKE '" + search + "'";
+                sql = sql + "WHERE website LIKE '" + search + "'";
             }
             SQLiteCommand cmd = new SQLiteCommand(sql, dbCon);
             SQLiteDataReader reader = cmd.ExecuteReader();
@@ -78,21 +77,21 @@ namespace Locker
         public void ChangeUsername(string name, long id)
         {
             string sql = "UPDATE logins SET username = '" + name + "' " +
-                         "WHERE websiteId = " + id;
+                         "WHERE Id = " + id;
             CmdExecution(sql);
         }
 
         public void ChangeWebsite(string name, long id)
         {
-            string sql = "UPDATE pages SET website = '" + name + "' " +
-                         "WHERE ID = " + id;
+            string sql = "UPDATE logins SET website = '" + name + "' " +
+                         "WHERE Id = " + id;
             CmdExecution(sql);
         }
 
         public void ChangeEmail(string email, long id)
         {
             string sql = "UPDATE logins SET email = '" + email + "' " +
-                         "WHERE websiteId = " + id;
+                         "WHERE Id = " + id;
             CmdExecution(sql);
         }
 
