@@ -78,6 +78,10 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="AddLogin.xaml.cs">
+      <DependentUpon>AddLogin.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Dates.cs" />
     <Compile Include="EmailChange.xaml.cs">
       <DependentUpon>EmailChange.xaml</DependentUpon>
     </Compile>
@@ -87,6 +91,10 @@
     <Compile Include="WebsiteChange.xaml.cs">
       <DependentUpon>WebsiteChange.xaml</DependentUpon>
     </Compile>
+    <Page Include="AddLogin.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="EmailChange.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>

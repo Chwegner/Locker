@@ -13,6 +13,7 @@ namespace Locker
     class Db
     {
         private SQLiteConnection dbCon;
+        private Dates date = new Dates();
 
         public Db()
         {
@@ -89,6 +90,14 @@ namespace Locker
         {
             string sql = string.Format("UPDATE logins SET email = '{0}' WHERE Id = {1}", email, id);
             CmdExecution(sql);
+        }
+
+        public void AddLogin(string name, string username, string email)
+        {
+            string now = date.DateNow();
+            string sql1 = string.Format("INSERT INTO logins (website, username, email, change) " +
+                                        "VALUES ('{0}', '{1}', '{2}', '{3}')", name, username, email, now);
+            CmdExecution(sql1);
         }
 
         private void CmdExecution(string sql)

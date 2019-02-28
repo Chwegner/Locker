@@ -101,6 +101,13 @@ namespace Locker
             }
         }
 
+        private void NewData(object sender, RoutedEventArgs e)
+        {
+            AddLogin add = new AddLogin();
+            add.ShowDialog();
+            FillDatagrid();
+        }
+
         /// <summary>
         /// Defining Content of Datagrid - Id only used, not shown
         /// </summary>
@@ -112,6 +119,7 @@ namespace Locker
             public string Email { get; set; }
             public string ChangeDate { get; set; }
         }
+
 
     }
 }
