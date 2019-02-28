@@ -89,7 +89,7 @@
             <Button Grid.Column="1" Grid.Row="0" Content="Copy Password"/>
             <Button Grid.Column="6" Grid.Row="0" Content="Copy OLD Password"/>
             <Button Grid.Column="0" Grid.Row="1" Content="Add new Login" Click="NewData"/>
-            <Button Grid.Column="1" Grid.Row="1" Content="Delete Login"/>
+            <Button Grid.Column="1" Grid.Row="1" Content="Delete Login" Click="DeleteLogin"/>
             <Button Grid.Column="0" Grid.Row="2" Content="Change Website" Click="ChangeWebsite"/>
             <Button Grid.Column="1" Grid.Row="2" Content="Change Username" Click="ChangeUsername"/>
             <Button Grid.Column="2" Grid.Row="2" Content="Change E-Mail" Click="ChangeEmail"/>

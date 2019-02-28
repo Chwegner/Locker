@@ -100,6 +100,12 @@ namespace Locker
             CmdExecution(sql1);
         }
 
+        public void DeleteLogin(long id)
+        {
+            string sql = string.Format("DELETE FROM logins WHERE Id = {0}", id);
+            CmdExecution(sql);
+        }
+
         private void CmdExecution(string sql)
         {
             SQLiteCommand cmd = new SQLiteCommand(sql, dbCon);
@@ -111,6 +117,10 @@ namespace Locker
             catch (InvalidOperationException e)
             {
                 MessageBox.Show(e.Message);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
             }
         }
     }

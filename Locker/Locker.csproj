@@ -88,6 +88,9 @@
     <Compile Include="UsernameChange.xaml.cs">
       <DependentUpon>UsernameChange.xaml</DependentUpon>
     </Compile>
+    <Compile Include="VerifyDeletion.xaml.cs">
+      <DependentUpon>VerifyDeletion.xaml</DependentUpon>
+    </Compile>
     <Compile Include="WebsiteChange.xaml.cs">
       <DependentUpon>WebsiteChange.xaml</DependentUpon>
     </Compile>
@@ -127,6 +130,10 @@
       <SubType>Code</SubType>
     </Compile>
     <Page Include="UsernameChange.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="VerifyDeletion.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

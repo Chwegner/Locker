@@ -12,9 +12,10 @@ namespace Locker
     /// </summary>
     public partial class MainPage : Page
     {
-        string search;
-        ArrayList list;
-        Db db = new Db();
+        private string search;
+        private ArrayList list;
+        private Db db = new Db();
+
 
         public MainPage()
         {
@@ -108,6 +109,17 @@ namespace Locker
             FillDatagrid();
         }
 
+        private void DeleteLogin(object sender, RoutedEventArgs e)
+        {
+            WebsiteInfo info = (WebsiteInfo)websiteTable.SelectedItem;
+            long id = info.Id;
+
+            VerifyDeletion delete = new VerifyDeletion(id);
+            delete.ShowDialog();
+            FillDatagrid();
+
+        }
+
         /// <summary>
         /// Defining Content of Datagrid - Id only used, not shown
         /// </summary>
@@ -119,7 +131,6 @@ namespace Locker
             public string Email { get; set; }
             public string ChangeDate { get; set; }
         }
-
 
     }
 }
