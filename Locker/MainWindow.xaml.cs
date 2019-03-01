@@ -11,6 +11,7 @@ namespace Locker
     {
         Db db = new Db();
         LockerMain locker = new LockerMain();
+        Crypt crypt = new Crypt();
 
         public MainWindow()
         {

@@ -14,6 +14,7 @@ namespace Locker
     {
         private SQLiteConnection dbCon;
         private Dates date = new Dates();
+        private Crypt crypt = new Crypt();
 
         public Db()
         {
@@ -95,9 +96,11 @@ namespace Locker
         public void AddLogin(string name, string username, string email)
         {
             string now = date.DateNow();
-            string sql1 = string.Format("INSERT INTO logins (website, username, email, change) " +
-                                        "VALUES ('{0}', '{1}', '{2}', '{3}')", name, username, email, now);
-            CmdExecution(sql1);
+            string pw = crypt.ObfuscatedPassword();
+            string sql = string.Format("INSERT INTO logins (website, username, email, change, password) " +
+                                        "VALUES ('{0}', '{1}', '{2}', '{3}', '{4}')", name, username, email, now, pw);
+            
+            CmdExecution(sql);
         }
 
         public void DeleteLogin(long id)

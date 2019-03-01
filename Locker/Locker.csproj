@@ -81,6 +81,7 @@
     <Compile Include="AddLogin.xaml.cs">
       <DependentUpon>AddLogin.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Crypt.cs" />
     <Compile Include="Dates.cs" />
     <Compile Include="EmailChange.xaml.cs">
       <DependentUpon>EmailChange.xaml</DependentUpon>
