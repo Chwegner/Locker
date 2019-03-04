@@ -75,6 +75,23 @@ namespace Locker
             return results;
         }
 
+        public string ReadUsername(long id, string username = "")
+        {
+
+            string sql = string.Format("SELECT username FROM logins WHERE Id = {0}", id);
+
+            SQLiteCommand cmd = new SQLiteCommand(sql, dbCon);
+            SQLiteDataReader reader = cmd.ExecuteReader();
+
+            while (reader.Read())
+            {
+                username = (string)reader["username"];
+            }
+
+            return username;
+        }
+
+
         public void ChangeUsername(string name, long id)
         {
             string sql = string.Format("UPDATE logins SET username = '{0}' WHERE Id = {1}", name, id);

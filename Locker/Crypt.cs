@@ -22,7 +22,7 @@ namespace Locker
                 charList.Add((char)i);
             }
 
-            for (int i = 'A'; i <= 'Z'; i++)
+            for (int i = 'A'; i <= 'Y'; i++)
             {
                 charList.Add((char)i);
             }
@@ -85,7 +85,7 @@ namespace Locker
             foreach (var item in password)
             {
                 builder.Append(pool.IndexOf(item));
-                builder.Append(" ");
+                builder.Append('Z');
             }
 
             return builder.ToString();
@@ -96,7 +96,7 @@ namespace Locker
             List<char> pool = CharPool();
             StringBuilder builder = new StringBuilder();
 
-            String[] trimmed = pw.Split(' ');
+            String[] trimmed = pw.Split('Z');
 
             foreach (var item in trimmed)
             {

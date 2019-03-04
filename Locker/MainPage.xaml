@@ -60,10 +60,10 @@
         <DataGrid Grid.Row="1" Name="websiteTable">
 
             <DataGrid.Columns>
-                <DataGridTextColumn Header="Website" Binding="{Binding Website}" Width="*"/>
-                <DataGridTextColumn Header="Username" Binding="{Binding Username}" Width="*"/>
-                <DataGridTextColumn Header="E-Mail" Binding="{Binding Email}" Width="*"/>
-                <DataGridTextColumn Header="PW changed" Binding="{Binding ChangeDate}" Width="*"/>
+                <DataGridTextColumn Header="Website" Binding="{Binding Website, Mode=OneWay}" Width="*"/>
+                <DataGridTextColumn Header="Username" Binding="{Binding Username, Mode=OneWay}" Width="*"/>
+                <DataGridTextColumn Header="E-Mail" Binding="{Binding Email, Mode=OneWay}" Width="*"/>
+                <DataGridTextColumn Header="PW changed" Binding="{Binding ChangeDate, Mode=OneWay}" Width="*"/>
             </DataGrid.Columns>
 
         </DataGrid>
@@ -85,7 +85,7 @@
                 <RowDefinition/>
             </Grid.RowDefinitions>
 
-            <Button Grid.Column="0" Grid.Row="0" Content="Copy Username"/>
+            <Button Grid.Column="0" Grid.Row="0" Content="Copy Username" Click="ClipboardUsername"/>
             <Button Grid.Column="1" Grid.Row="0" Content="Copy Password"/>
             <Button Grid.Column="6" Grid.Row="0" Content="Copy OLD Password"/>
             <Button Grid.Column="0" Grid.Row="1" Content="Add new Login" Click="NewData"/>

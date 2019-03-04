@@ -2,7 +2,7 @@
 using System.Collections;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Navigation;
+using System.Windows.Threading;
 
 namespace Locker
 {
@@ -15,6 +15,7 @@ namespace Locker
         private string search;
         private ArrayList list;
         private Db db = new Db();
+        private string usernameCopy;
 
 
         public MainPage()
@@ -42,7 +43,50 @@ namespace Locker
                 websiteTable.Items.Add(item);
             }
         }
-    
+
+
+        private void timerTick(object sender, EventArgs e)
+        {
+            // TODO 
+            IDataObject data = Clipboard.GetDataObject();
+            string datastring = data.GetFormats().ToString();
+
+            if (datastring.Equals(usernameCopy))
+            {
+                Clipboard.Clear();
+            }
+        }
+
+
+        private void ClipboardUsername(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                WebsiteInfo info = (WebsiteInfo)websiteTable.SelectedItem;
+
+                long id = info.Id;
+                string username = db.ReadUsername(id);
+                usernameCopy = username;
+
+                DataObject data = new DataObject(DataFormats.UnicodeText, (Object)username);
+                Clipboard.SetDataObject(data, false);
+
+
+
+                DispatcherTimer timer = new DispatcherTimer();
+                timer.Interval = TimeSpan.FromSeconds(30);
+                timer.Tick += new EventHandler(timerTick);
+                timer.Start();
+
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+
+
+        }
 
         // open window to change selected username
         private void ChangeUsername(object sender, System.Windows.RoutedEventArgs e)
